@@ -1,6 +1,6 @@
 # Nitro Sniper v1
 
-The only nitro sniper with a graphical interface, fast and efficient.
+The only nitro sniper with a graphical interface, fast and efficient.  
 Download link : https://github.com/Disc0rdTools/NitroSniper/releases/download/V1/NitroSniper_v1.zip
 
 ## Features :
