@@ -78,13 +78,13 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
             this.customButton1 = new NitroSniper.CustomButton();
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -409,13 +409,13 @@
             // 
             this.radioButton1.Appearance = System.Windows.Forms.Appearance.Button;
             this.radioButton1.AutoSize = true;
-            this.radioButton1.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(75)))), ((int)(((byte)(124)))));
             this.radioButton1.Checked = true;
             this.radioButton1.Dock = System.Windows.Forms.DockStyle.Top;
             this.radioButton1.FlatAppearance.BorderSize = 0;
-            this.radioButton1.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.radioButton1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.radioButton1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumTurquoise;
+            this.radioButton1.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(43)))), ((int)(((byte)(103)))));
+            this.radioButton1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(75)))), ((int)(((byte)(100)))));
+            this.radioButton1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
             this.radioButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton1.ForeColor = System.Drawing.Color.Transparent;
@@ -434,12 +434,12 @@
             // 
             this.radioButton2.Appearance = System.Windows.Forms.Appearance.Button;
             this.radioButton2.AutoSize = true;
-            this.radioButton2.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(75)))), ((int)(((byte)(124)))));
             this.radioButton2.Dock = System.Windows.Forms.DockStyle.Top;
             this.radioButton2.FlatAppearance.BorderSize = 0;
-            this.radioButton2.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.radioButton2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.radioButton2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumTurquoise;
+            this.radioButton2.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(43)))), ((int)(((byte)(103)))));
+            this.radioButton2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(75)))), ((int)(((byte)(100)))));
+            this.radioButton2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
             this.radioButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton2.ForeColor = System.Drawing.Color.Transparent;
@@ -457,12 +457,12 @@
             // 
             this.radioButton3.Appearance = System.Windows.Forms.Appearance.Button;
             this.radioButton3.AutoSize = true;
-            this.radioButton3.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(75)))), ((int)(((byte)(124)))));
             this.radioButton3.Dock = System.Windows.Forms.DockStyle.Top;
             this.radioButton3.FlatAppearance.BorderSize = 0;
-            this.radioButton3.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.radioButton3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.radioButton3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumTurquoise;
+            this.radioButton3.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(43)))), ((int)(((byte)(103)))));
+            this.radioButton3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(75)))), ((int)(((byte)(100)))));
+            this.radioButton3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(75)))), ((int)(((byte)(105)))));
             this.radioButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton3.ForeColor = System.Drawing.Color.Transparent;
@@ -480,7 +480,7 @@
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(0)))), ((int)(((byte)(199)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(43)))), ((int)(((byte)(63)))));
             this.panel1.Controls.Add(this.radioButton3);
             this.panel1.Controls.Add(this.radioButton2);
             this.panel1.Controls.Add(this.radioButton1);
@@ -686,9 +686,9 @@
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label3.Location = new System.Drawing.Point(3, 65);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(129, 30);
+            this.label3.Size = new System.Drawing.Size(129, 15);
             this.label3.TabIndex = 3;
-            this.label3.Text = "Alts tokens (optional)  :\r\n(one per line)\r\n";
+            this.label3.Text = "Alts tokens (optional)  :";
             // 
             // textBox3
             // 
@@ -760,6 +760,41 @@
             this.panel6.TabIndex = 31;
             this.panel6.Visible = false;
             // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Segoe UI", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label33.Location = new System.Drawing.Point(20, 15);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(775, 128);
+            this.label33.TabIndex = 6;
+            this.label33.Text = "Nitro Sniper V1.1";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label32.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label32.Location = new System.Drawing.Point(71, 419);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(279, 30);
+            this.label32.TabIndex = 5;
+            this.label32.Text = "https://digitalcord.mysellix.io";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label31.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label31.Location = new System.Drawing.Point(71, 320);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(310, 30);
+            this.label31.TabIndex = 4;
+            this.label31.Text = "https://github.com/Disc0rdTools";
+            // 
             // label30
             // 
             this.label30.AutoSize = true;
@@ -780,9 +815,9 @@
             this.label29.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label29.Location = new System.Drawing.Point(18, 279);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(311, 30);
+            this.label29.Size = new System.Drawing.Size(353, 30);
             this.label29.TabIndex = 2;
-            this.label29.Text = "The other tools can be found at:";
+            this.label29.Text = "The other free tools can be found at:";
             // 
             // label28
             // 
@@ -791,9 +826,9 @@
             this.label28.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label28.Location = new System.Drawing.Point(18, 376);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(264, 30);
+            this.label28.Size = new System.Drawing.Size(357, 30);
             this.label28.TabIndex = 1;
-            this.label28.Text = "Our discord support server:";
+            this.label28.Text = "The other paid tools can be found at:";
             // 
             // label27
             // 
@@ -806,45 +841,10 @@
             this.label27.TabIndex = 0;
             this.label27.Text = "The source code for this tool can be found on github at:";
             // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label31.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label31.Location = new System.Drawing.Point(71, 320);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(310, 30);
-            this.label31.TabIndex = 4;
-            this.label31.Text = "https://github.com/Disc0rdTools";
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label32.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label32.Location = new System.Drawing.Point(71, 419);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(313, 30);
-            this.label32.TabIndex = 5;
-            this.label32.Text = "https://discord.gg/UCn64wU8pw";
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Font = new System.Drawing.Font("Segoe UI", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label33.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label33.Location = new System.Drawing.Point(20, 15);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(702, 128);
-            this.label33.TabIndex = 6;
-            this.label33.Text = "Nitro Sniper V1";
-            // 
             // customButton1
             // 
-            this.customButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.customButton1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.customButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
+            this.customButton1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
             this.customButton1.BorderColor = System.Drawing.Color.PaleVioletRed;
             this.customButton1.BorderRadius = 0;
             this.customButton1.BorderSize = 0;
@@ -869,8 +869,8 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(958, 486);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel6);
             this.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -962,4 +962,3 @@
         private System.Windows.Forms.Label label33;
     }
 }
-

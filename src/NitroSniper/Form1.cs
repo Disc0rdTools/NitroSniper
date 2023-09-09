@@ -28,6 +28,7 @@ namespace NitroSniper
         public static int current_codes = 0;
         public static List<Task> tasks = new List<Task>();
         public static string settings_path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\settings.json";
+        readonly Regex token_regex = new Regex("[A-Za-z0-9\\/\\+]{23,27}\\.[A-Za-z0-9\\/\\+_-]{6}\\.[A-Za-z0-9\\/\\+_-]{38}");
 
         public Form1()
         {
@@ -75,16 +76,29 @@ namespace NitroSniper
             customButton1.Enabled = false;
             if (customButton1.Text == "Start sniping !")
             {
-
+                if (textBox2.Text == "" && checkBox6.Checked)
+                {
+                    MessageBox.Show("You need to provide a main token", "No main token", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    customButton1.Enabled = true;
+                    return;
+                }
                 if (textBox3.Text != "")
                 {
-                    HashSet<string> linesHashSet = new HashSet<string>(textBox3.Text.Split('\n'));
-
-                    foreach (var line in linesHashSet)
+                    HashSet<string> tokens = new HashSet<string>();
+                    MatchCollection matches = token_regex.Matches(textBox3.Text);
+                    foreach (Match match in matches)
+                    {
+                        tokens.Add(match.Value);
+                    }
+                    if (tokens.Contains(textBox2.Text))
+                    {
+                        tokens.Remove(textBox2.Text);
+                    }
+                    foreach (var token in tokens)
                     {
                         tasks.Add(Task.Run(async () =>
                         {
-                            DiscordBot alt = new DiscordBot(this, line, richTextBox1, false);
+                            DiscordBot alt = new DiscordBot(this, token, richTextBox1, false);
                             await alt.Start();
                         }));
                     }
@@ -256,7 +270,12 @@ namespace NitroSniper
             }
             catch (Exception)
             {
-                AppendText(_rtb, $"The token {_token} is invalid !", Color.Red);
+                AppendText(_rtb, $"The token {_token} is invalid!\n", Color.Red);
+                if (FormH.MainOnly && _main)
+                {
+                    MessageBox.Show("You need to provide a valid main token", "Invalid main token", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Application.Restart();
+                }
             }
             await Task.Delay(-1);
         }
@@ -298,7 +317,7 @@ namespace NitroSniper
                     await _client.SetStatusAsync(UserStatus.Invisible);
                 }
             }
-            _rtb.AppendText($"Logged in as {_client.CurrentUser.Username}\n");
+            _rtb.AppendText($"Logged in as {_client.CurrentUser.Username} {(_main ? "(main account)" : "")}\n");
             return Task.CompletedTask;
         }
 
