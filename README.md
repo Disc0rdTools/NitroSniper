@@ -15,6 +15,6 @@ Download link : https://github.com/Disc0rdTools/NitroSniper/releases/download/V1
 - **Versatile Token Status**: Tokens can be in either online or offline mode.
 
  ## Screens :
-![NitroSniperMain](https://github.com/Disc0rdTools/NitroSniper/assets/138772998/b62e9a0d-fc44-4711-980f-25e07ae61372)
-![NitroSniperSettings](https://github.com/Disc0rdTools/NitroSniper/assets/138772998/671ff2bd-7a18-43fd-a65e-6277f7cfefb5)
-![NitroSniperAbout](https://github.com/Disc0rdTools/NitroSniper/assets/138772998/a11d5e1f-0ea4-4b31-b023-69f8713e0759)
+![NitroSniperMain](https://github.com/Disc0rdTools/NitroSniper/assets/138772998/3a4766e7-aeb0-491b-9d69-e2aa1801f3c9)
+![NitroSniperSettings](https://github.com/Disc0rdTools/NitroSniper/assets/138772998/1db1ceb1-f72b-4d12-a47b-ae67e24522fb)
+![NitroSniperAbout](https://github.com/Disc0rdTools/NitroSniper/assets/138772998/a7548258-7aaf-4209-95fb-1933ab77706c)
