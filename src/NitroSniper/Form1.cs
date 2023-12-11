@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using System.IO;
 using System.Diagnostics;
 using System.Reflection;
+using System.Linq;
 
 namespace NitroSniper
 {
@@ -28,7 +29,7 @@ namespace NitroSniper
         public static int current_codes = 0;
         public static List<Task> tasks = new List<Task>();
         public static string settings_path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\settings.json";
-        readonly Regex token_regex = new Regex("[A-Za-z0-9\\/\\+]{23,27}\\.[A-Za-z0-9\\/\\+_-]{6}\\.[A-Za-z0-9\\/\\+_-]{38}");
+        readonly Regex token_regex = new Regex("[A-Za-z0-9\\/\\+]{23,27}\\.[A-Za-z0-9\\/\\+_-]{6}\\.[A-Za-z0-9\\/\\+_-]{25,38}");
 
         public Form1()
         {
@@ -96,15 +97,32 @@ namespace NitroSniper
                     }
                     foreach (var token in tokens)
                     {
+                        string status = checkToken(token);
+                        if (status == "invalid")
+                        {
+                            GlobalFunctions.AppendText(richTextBox1, $"{GlobalFunctions.GetHour()} Token {token} is invalid!\n", Color.Red);
+                            continue;
+                        }
+                        if (status == "locked")
+                        {
+                            GlobalFunctions.AppendText(richTextBox1, $"{GlobalFunctions.GetHour()} Token {token} is locked!\n", Color.Red);
+                            continue;
+                        }
                         tasks.Add(Task.Run(async () =>
                         {
                             DiscordBot alt = new DiscordBot(this, token, richTextBox1, false);
                             await alt.Start();
                         }));
+                        
                     }
                 }
                 tasks.Add(Task.Run(async () =>
                 {
+                    if (checkToken(textBox2.Text) != "valid")
+                    {
+                        MessageBox.Show("You need to provide a valid main token", "Invalid main token", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Application.Restart();
+                    }
                     DiscordBot bot = new DiscordBot(this, textBox2.Text, richTextBox1, true);
                     await bot.Start();
                 }));
@@ -193,7 +211,7 @@ namespace NitroSniper
                     WebhookNotif = WebHookNotif,
                     WebhookUrl = WebHookURL
                 };
-                string json = JsonConvert.SerializeObject(settings);
+                string json = JsonConvert.SerializeObject(settings, Formatting.Indented);
                 File.WriteAllText(settings_path, json);
             }
         }
@@ -233,6 +251,24 @@ namespace NitroSniper
         {
             Process.Start(label30.Text);
         }
+
+        private string checkToken(string token)
+        {
+            HttpClient httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/115.0");
+            httpClient.DefaultRequestHeaders.Add("Authorization", token);
+            HttpResponseMessage response = httpClient.GetAsync("https://discord.com/api/v9/users/@me/settings").Result;
+            int code = (int)response.StatusCode;
+            if (code == 401)
+            {
+                return "invalid";
+            }
+            if (code == 403)
+            {
+                return "locked";
+            }
+            return "valid";
+        }
     }
     public class DiscordBot
     {
@@ -270,7 +306,7 @@ namespace NitroSniper
             }
             catch (Exception)
             {
-                AppendText(_rtb, $"The token {_token} is invalid!\n", Color.Red);
+                GlobalFunctions.AppendText(_rtb, $"{GlobalFunctions.GetHour()} The token {_token} is invalid!\n", Color.Red);
                 if (FormH.MainOnly && _main)
                 {
                     MessageBox.Show("You need to provide a valid main token", "Invalid main token", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -287,21 +323,22 @@ namespace NitroSniper
                 Form1.guilds.Add(guild.Id);
             }
             Form1.nb_selfs++;
-            FormH.updateStatus($"Snipping nitro on {Form1.guilds.Count} guilds with {Form1.nb_selfs} account(s).");
+            FormH.updateStatus($"Sniping nitro on {Form1.guilds.Count} guilds with {Form1.nb_selfs} account(s).");
             if (_main)
             {
                 if (FormH.WebHookNotif)
                 {
-                    bool is_send = await SendWebhook("# Valid webhook\nThe sniper will send a message via this webhook when he collects nitros.", FormH.WebHookURL, "Nitro Sniper");
+                    bool is_send = await SendWebhook("# Valid webhook\nThe sniper will send a message via this webhook when it claims nitros.", FormH.WebHookURL, "Nitro Sniper");
                     if (!is_send)
                     {
-                        AppendText(_rtb, "As the webhook url is invalid, no webhook notification will be sent.\n", Color.Red);
+                        GlobalFunctions.AppendText(_rtb, $"{GlobalFunctions.GetHour()} As the webhook url is invalid, no webhook notification will be sent.\n", Color.Red);
                     }
                 }
-                if ( FormH.MainOnline)
+                if (FormH.MainOnline)
                 {
                     await _client.SetStatusAsync(UserStatus.Online);
-                }else
+                }
+                else
                 {
                     await _client.SetStatusAsync(UserStatus.Invisible);
                 }
@@ -317,7 +354,7 @@ namespace NitroSniper
                     await _client.SetStatusAsync(UserStatus.Invisible);
                 }
             }
-            _rtb.AppendText($"Logged in as {_client.CurrentUser.Username} {(_main ? "(main account)" : "")}\n");
+            _rtb.AppendText($"{GlobalFunctions.GetHour()} Logged in as {_client.CurrentUser.Username} {(_main ? "(main account)" : "")}\n");
             return Task.CompletedTask;
         }
 
@@ -363,23 +400,23 @@ namespace NitroSniper
                         }
                         if (result.Contains("subscription_plan"))
                         {
-                            AppendText(_rtb, $"Successfully snipped code {code} from {author} with {_client.CurrentUser.Username} in {mes} in {duration.TotalMilliseconds} ms\n", Color.Green);
+                            GlobalFunctions.AppendText(_rtb, $"{GlobalFunctions.GetHour()} Successfully sniped code {code} from {author} with {_client.CurrentUser.Username} in {mes} in {duration.TotalMilliseconds} ms\n", Color.Green);
                             if (FormH.WebHookNotif)
                             {
-                                bool is_send = await SendWebhook($"Successfully snipped code {code} from {author} with {_client.CurrentUser.Username} in {mes} in {duration.TotalMilliseconds} ms", FormH.WebHookURL, "Heck Sniper");
+                                bool is_send = await SendWebhook($"Successfully sniped code {code} from {author} with {_client.CurrentUser.Username} in {mes} in {duration.TotalMilliseconds} ms", FormH.WebHookURL, "Nitro Sniper");
                                 if (!is_send)
                                 {
-                                    AppendText(_rtb, "As the webhook url is invalid, no webhook notification has been sent.\n", Color.Red);
+                                    GlobalFunctions.AppendText(_rtb, $"{GlobalFunctions.GetHour()} As the webhook url is invalid, no webhook notification has been sent.\n", Color.Orange);
                                 }
                             }
                         }
                         else if (result.Contains("This gift has been redeemed already."))
                         {
-                            AppendText(_rtb, $"Code {code} already redeemed from {author} with {_client.CurrentUser.Username} in {mes} in {duration.TotalMilliseconds} ms\n", Color.Orange);
+                            GlobalFunctions.AppendText(_rtb, $"{GlobalFunctions.GetHour()} Code {code} already redeemed from {author} with {_client.CurrentUser.Username} in {mes} in {duration.TotalMilliseconds} ms\n", Color.Orange);
                         }
                         else
                         {
-                            AppendText(_rtb, $"Detected fake code {code} from {author} with {_client.CurrentUser.Username} in {mes} in {((int)duration.TotalMilliseconds)} ms\n", Color.Red);
+                            GlobalFunctions.AppendText(_rtb, $"{GlobalFunctions.GetHour()} Detected fake code {code} from {author} with {_client.CurrentUser.Username} in {mes} in {((int)duration.TotalMilliseconds)} ms\n", Color.Red);
                         }
                         Form1.UserIds.Add(message.Author.Id);
                         Form1.current_codes++;
@@ -390,20 +427,11 @@ namespace NitroSniper
                     }
                     else
                     {
-                        _rtb.AppendText($"Detected duplicated code {code}\n");
+                        _rtb.AppendText($"{GlobalFunctions.GetHour()} Detected duplicated code {code}\n");
                     }
                 }
             }
             return Task.CompletedTask;
-        }
-        private void AppendText(RichTextBox box, string text, Color color)
-        {
-            box.SelectionStart = box.TextLength;
-            box.SelectionLength = 0;
-
-            box.SelectionColor = color;
-            box.AppendText(text);
-            box.SelectionColor = box.ForeColor;
         }
 
         public async Task<bool> SendWebhook(string message, string webhookUrl, string username)
@@ -413,9 +441,10 @@ namespace NitroSniper
                 var data = new
                 {
                     content = message,
-                    username = username
+                    username,
+                    avatar_url = "https://i.ibb.co/JKPGsqJ/Digital-Cord-pp-lite.png"
                 };
-                var json = JsonConvert.SerializeObject(data);
+                var json = JsonConvert.SerializeObject(data, Formatting.Indented);
                 var contentData = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
                 try
                 {
@@ -432,8 +461,8 @@ namespace NitroSniper
                 }
             }
         }
-
     }
+
 }
 [Serializable]
 public class Settings
@@ -452,4 +481,21 @@ public class Settings
     public List<ulong> Guilds { get; set; } = new List<ulong>();
     public List<ulong> Channels { get; set; } = new List<ulong>();
 
+}
+
+public static class GlobalFunctions
+{
+    public static void AppendText(RichTextBox box, string text, Color color)
+    {
+        box.SelectionStart = box.TextLength;
+        box.SelectionLength = 0;
+
+        box.SelectionColor = color;
+        box.AppendText(text);
+        box.SelectionColor = box.ForeColor;
+    }
+    public static string GetHour()
+    {
+        return "[" + DateTime.Now.ToString("HH:mm:ss") + "]";
+    }
 }
